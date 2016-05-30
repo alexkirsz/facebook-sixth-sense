@@ -1,0 +1,12 @@
+{
+  "extends": "airbnb",
+  "globals": {
+    "chrome": true,
+    "requireLazy": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  }
+}

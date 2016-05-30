@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+
+  "name": "Facebook Sixth Sense",
+  "description": "Lets you know you whenever your friends start writing to you on Facebook",
+  "version": "1.1",
+
+  "icons": {
+    "16": "assets/icon16.png",
+    "32": "assets/icon32.png",
+    "96": "assets/icon96.png",
+    "128": "assets/icon128.png",
+    "256": "assets/icon256.png"
+  },
+
+  "browser_action": {
+    "default_icon": {
+      "19": "assets/icon19_inactive.png",
+      "38": "assets/icon38_inactive.png"
+    },
+    "default_title": "Facebook Sixth Sense",
+    "default_popup": "popup.html"
+  },
+
+  "background": {
+    "scripts": ["lib/background.js"]
+  },
+
+  "permissions": [
+    "declarativeContent",
+    "storage",
+    "*://*.facebook.com/*"
+  ],
+
+  "web_accessible_resources": [
+    "lib/hook.js"
+  ],
+
+  "externally_connectable": {
+    "matches": ["*://*.facebook.com/*"]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "facebook-sixth-sense",
+  "version": "1.0.0",
+  "description": "",
+  "main": "background.js",
+  "scripts": {
+    "start": "babel-node ./node_modules/.bin/webpack --watch",
+    "postinstall": "babel-node ./node_modules/.bin/webpack",
+    "lint": "eslint . --ext .js,.jsx",
+    "build": "npm install && npm run lint && zip -r extension.zip extension"
+  },
+  "author": "Alexandre Kirszenberg <alexandre.kirszenberg@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-transform-object-rest-spread": "^6.3.13",
+    "classnames": "^2.2.5",
+    "css-loader": "^0.23.1",
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.2.0",
+    "eslint-plugin-react": "^5.1.1",
+    "lodash": "^4.0.0",
+    "moment": "^2.13.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.12.12"
+  }
+}

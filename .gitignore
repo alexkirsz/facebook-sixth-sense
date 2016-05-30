@@ -1,0 +1,5 @@
+node_modules/
+extension/lib/
+extension.zip
+npm-debug.log
+.DS_Store

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="268px" height="108px" viewBox="0 0 268 108" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.2 (15855) - http://www.bohemiancoding.com/sketch -->
+    <title>closed</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Group" sketch:type="MSLayerGroup" transform="translate(-465.000000, -226.000000)" stroke-linecap="round" stroke="#979797" stroke-width="48">
+            <g transform="translate(10.000000, 0.000000)" id="Path-1-Copy-4-+-Path-1-Copy-3-+-Path-3-Copy-+-Mask-Copy-Copy" sketch:type="MSShapeGroup">
+                <g transform="translate(409.000000, 0.000000)">
+                    <path d="M70,250 L90,250 C90,250 130,310 190,310 C250,310 290,250 290,250" id="closed"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
