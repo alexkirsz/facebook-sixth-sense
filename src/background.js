@@ -12,6 +12,11 @@ chrome.runtime.onInstalled.addListener(() => {
               hostContains: 'facebook',
             },
           }),
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: {
+              hostContains: 'messenger',
+            },
+          }),
         ],
         actions: [
           new chrome.declarativeContent.RequestContentScript({

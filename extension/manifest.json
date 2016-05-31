@@ -29,7 +29,8 @@
   "permissions": [
     "declarativeContent",
     "storage",
-    "*://*.facebook.com/*"
+    "*://*.facebook.com/*",
+    "*://*.messenger.com/*"
   ],
 
   "web_accessible_resources": [
