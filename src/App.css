@@ -19,7 +19,14 @@
 .actions {
   flex-grow: 1;
   flex-shrink: 1;
-  overflow: scroll;
+  overflow: auto;
+  padding: 8px 0;
+}
+/* To display a message to the user when there are no actions */
+.actions:empty::after {
+  content: "Nothing to show here yet.";
+  display: flex;
+  justify-content: center;
   padding: 8px 0;
 }
 
