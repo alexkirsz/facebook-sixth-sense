@@ -11,7 +11,6 @@ requireLazy(
       );
       MercuryThreads.get().getMultiThreadMeta(threadIds, threads => {
         ShortProfiles.getMulti(userIds, users => {
-          console.log('ok');
           window.postMessage({
             type: 'update',
             threads,
