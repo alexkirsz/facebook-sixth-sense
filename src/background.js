@@ -1,5 +1,6 @@
 import difference from 'lodash/difference';
 import intersection from 'lodash/intersection';
+import keyBy from 'lodash/keyBy';
 import getUserId from './getUserId';
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -28,8 +29,9 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-chrome.runtime.onMessage.addListener(request => {
+function updateState(request) {
   const { state: nextState, users: nextUsers, threads: nextThreads } = request;
+
   chrome.storage.local.get('store', ({ store = '{}' }) => {
     const storeData = JSON.parse(store);
     const {
@@ -101,4 +103,32 @@ chrome.runtime.onMessage.addListener(request => {
       });
     }
   });
+}
+
+function updateMessages(request) {
+  const { messages: newMessages } = request;
+
+  chrome.storage.local.get('store', ({ store = '{}' }) => {
+    const storeData = JSON.parse(store);
+    const { messages = [] } = storeData;
+    const messagesById = keyBy(messages, 'message_id');
+    const newMessagesDeduped = newMessages.filter(m =>
+      !messagesById.hasOwnProperty(m.message_id)
+    );
+    const nextMessages = messages.concat(newMessagesDeduped);
+    chrome.storage.local.set({
+      store: JSON.stringify({
+        ...storeData,
+        messages: nextMessages,
+      }),
+    });
+  });
+}
+
+chrome.runtime.onMessage.addListener(request => {
+  if (request.type === 'update-messages') {
+    updateMessages(request);
+  } else if (request.type === 'update') {
+    updateState(request);
+  }
 });
