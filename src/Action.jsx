@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
 import cx from 'classnames';
+import last from 'lodash';
 
 import styles from './Action.css';
 
 function Action(props) {
   const { action, unread } = props;
+
   let lastEnd = 0;
   const typings = [];
   action.typings.forEach((typing, typingIdx) => {
@@ -25,9 +27,13 @@ function Action(props) {
         />
       );
     }
+
     typings.push(
       <div
-        className={styles.typing}
+        className={cx([
+          styles.typing,
+          typing.ongoing && styles.typingOngoing,
+        ])}
         title={
           `${Math.round((typing.endDate - typing.startDate) / 1000)}s – ` +
           `${moment(typing.startDate).format('HH:mm:ss')} to ` +
@@ -38,6 +44,61 @@ function Action(props) {
     );
     lastEnd = end;
   });
+
+  typings.push(
+    <div
+      className={styles.pause}
+      title={`${Math.round((action.endDate - lastEnd) / 1000)}s`}
+      style={{
+        width: action.endDate - last(action.typings).endDate,
+      }}
+    />
+  );
+
+  let lastDate = 0;
+  const messages = [];
+
+  if (action.messages.length > 0) {
+    messages.push(
+      <div
+        className={styles.pauseIgnored}
+        style={{
+          width: action.messages[0].timestamp - action.startDate,
+        }}
+      />
+    );
+  }
+
+  action.messages.forEach((message, messageIdx) => {
+    if (messageIdx !== 0) {
+      messages.push(
+        <div
+          className={styles.pauseIgnored}
+          style={{
+            width: message.timestamp - lastDate,
+          }}
+        />
+      );
+    }
+
+    messages.push(
+      <div
+        className={styles.message}
+        title={moment(message.timestamp).format('HH:mm:ss')}
+      />
+    );
+
+    lastDate = message.timestamp;
+  });
+
+  messages.push(
+    <div
+      className={styles.pauseIgnored}
+      style={{
+        width: action.endDate - lastDate,
+      }}
+    />
+  );
 
   return (
     <div
@@ -62,8 +123,13 @@ function Action(props) {
           }
         </div>
         <div className={styles.date}>{moment(action.endDate).fromNow()}</div>
-        <div className={styles.typings}>
-          {typings}
+        <div className={styles.bar}>
+          <div className={styles.typings}>
+            {typings}
+          </div>
+          <div className={styles.messages}>
+            {messages}
+          </div>
         </div>
       </div>
     </div>

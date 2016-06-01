@@ -48,6 +48,10 @@
   border-radius: 50%;
 }
 
+.bar {
+  position: relative;
+}
+
 .typings {
   width: 100%;
   display: flex;
@@ -64,6 +68,32 @@
   transition: background-color 0.1s ease;
 }
 
+.typingOngoing {
+  background-color: green;
+}
+
 .typing:hover {
   background-color: rgba(0, 0, 0, 0.15);
+}
+
+.messages {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-self: stretch;
+  height: 7px;
+}
+
+.pauseIgnored {
+  pointer-events: none;
+}
+
+.message {
+  flex-shrink: 0;
+  width: 2px;
+  margin: -1px;
+  border-radius: 1px;
+  background-color: #3b5998;
 }
