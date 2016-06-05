@@ -19,7 +19,7 @@
 .actions {
   flex-grow: 1;
   flex-shrink: 1;
-  overflow: scroll;
+  overflow: auto;
   padding: 8px 0;
 }
 
