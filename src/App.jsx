@@ -15,14 +15,29 @@ function Popup(props) {
         />
         Facebook Sixth Sense
       </div>
-      <div className={styles.actions}>
-        {actions.map(action =>
-          <Action
-            key={action.startDate}
-            action={action}
-            unread={action.endDate > lastReadDate}
-          />
-        )}
+      <div className={styles.content}>
+        <div className={styles.actions}>
+          {actions.map(action =>
+            <Action
+              key={action.startDate}
+              action={action}
+              unread={action.endDate > lastReadDate}
+            />
+          )}
+        </div>
+        <div className={styles.info}>
+          {actions.length === 0 &&
+            <div className={styles.empty}>There's nothing to show here yet!</div>
+          }
+          <a
+            className={styles.faq}
+            href="https://github.com/Morhaus/facebook-sixth-sense/blob/master/FAQ.md#why-are-some-events-not-showing-up"
+            target="_blank"
+            tabIndex={-1}
+          >
+            Why are some events not showing up?
+          </a>
+        </div>
       </div>
       <div className={styles.footer}>
         <span className={styles.clickable} onClick={onClear}>

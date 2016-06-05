@@ -16,11 +16,24 @@
   overflow: auto;
 }
 
-.actions {
+.content {
   flex-grow: 1;
   flex-shrink: 1;
   overflow: auto;
   padding: 8px 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 8px 13px 0;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.faq {
+  margin-top: 10px;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .header, .footer {
