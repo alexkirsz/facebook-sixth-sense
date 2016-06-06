@@ -9,7 +9,7 @@ window.addEventListener('message', event => {
     return;
   }
 
-  if (event.data.type && (event.data.type === 'update')) {
+  if (event.data.type && (['update', 'update-messages'].indexOf(event.data.type) !== -1)) {
     chrome.runtime.sendMessage(event.data);
   }
 }, false);
