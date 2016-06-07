@@ -46,26 +46,34 @@ function Action(props) {
         styles.action,
       ])}
     >
-      <img
-        alt={action.user.name}
-        src={action.user.thumbSrc}
-        className={styles.thumb}
-      />
-      <div className={styles.info}>
-        <div className={styles.infoHead}>
-          <div className={styles.name}>{action.user.name}</div>
-          {!action.thread.is_canonical &&
-            [
-              <div className={styles.convIn}>in</div>,
-              <div className={styles.convName}>{action.thread.name}</div>,
-            ]
-          }
+      <a
+        className={styles.actionLink}
+        href={action.threadUrl}
+        target="_blank"
+      >
+        <img
+          alt={action.user.name}
+          src={action.user.thumbSrc}
+          className={styles.thumb}
+        />
+        <div className={styles.info}>
+          <div className={styles.infoHead}>
+            <div className={styles.name}>
+              <a href={action.user.uri} target="_blank">{action.user.name}</a>
+            </div>
+            {!action.thread.is_canonical &&
+              [
+                <div className={styles.convIn}>in</div>,
+                <div className={styles.convName}>{action.thread.name}</div>,
+              ]
+            }
+          </div>
+          <div className={styles.date}>{moment(action.endDate).fromNow()}</div>
+          <div className={styles.typings}>
+            {typings}
+          </div>
         </div>
-        <div className={styles.date}>{moment(action.endDate).fromNow()}</div>
-        <div className={styles.typings}>
-          {typings}
-        </div>
-      </div>
+      </a>
     </div>
   );
 }

@@ -14,6 +14,8 @@ const AGGREGATE_TIME = 30 * 60 * 1000;
 // while someone is typing.
 const IGNORE_LIMIT = 10 * 60 * 1000;
 
+const BASE_URL = 'https://facebook.com/messages/';
+
 function aggregate(actions) {
   const byUserThread = groupBy(
     actions,
@@ -53,6 +55,15 @@ function aggregate(actions) {
 
     const { user, thread } = utActions[0];
 
+    let threadUrl = null;
+
+    // The message url changes whether it is a group message vs a single user.
+    if (!thread.is_canonical) {
+      threadUrl = `${BASE_URL}conversation-${thread.thread_fbid}`;
+    } else {
+      threadUrl = BASE_URL + user.id;
+    }
+
     let prevAction = null;
     for (const typing of typings) {
       if (
@@ -65,6 +76,7 @@ function aggregate(actions) {
         prevAction = {
           user,
           thread,
+          threadUrl,
           startDate: typing.startDate,
           endDate: typing.endDate,
           typings: [typing],
