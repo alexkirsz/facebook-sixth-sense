@@ -1,5 +1,8 @@
 .action {
   padding: 5px 13px;
+}
+
+.actionLink {
   display: flex;
   flex-direction: row;
 }
